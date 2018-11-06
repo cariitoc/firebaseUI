@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         db=FirebaseDatabase.getInstance();
-        DatabaseReference reference= db.getReference().child("usuarios");
+        DatabaseReference reference= db.getReference().child("usuarios").child("dsrasf");
        // Usuario nathan = new Usuario("sdsd","Nathan","nathan@g.com","2324");
        //reference.push().setValue(nathan);
 
@@ -28,10 +28,16 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
             for(DataSnapshot data: dataSnapshot.getChildren()){
-                Usuario s=data.getValue(Usuario.class);
-                Log.e("NOMBRE","nombre:"+s.nombre);
+             //   Usuario s=data.getValue(Usuario.class);
+               // Log.e("NOMBRE","nombre:"+s.nombre);
+
+                   Usuario s=dataSnapshot.getValue(Usuario.class);
+                 Log.e("NOMBRE","nombre:"+s.nombre);
+
+
             }
         }
+
 
         @Override
         public void onCancelled(@NonNull DatabaseError databaseError) {
